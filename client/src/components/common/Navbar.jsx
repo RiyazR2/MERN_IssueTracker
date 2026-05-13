@@ -19,16 +19,14 @@ const Navbar = () => {
             <Link to="/" className="text-xl font-bold">
               Issue Tracker
             </Link>
-            {isAuthenticated && (
-              <Flex gap="3">
-                <Link to="/" className="nav-link">
-                  Dashboard
-                </Link>
-                <Link to="/issues" className="nav-link">
-                  Issues
-                </Link>
-              </Flex>
-            )}
+            <Flex gap="3">
+              <Link to="/" className="nav-link">
+                Dashboard
+              </Link>
+              <Link to="/issues" className="nav-link">
+                Issues
+              </Link>
+            </Flex>
           </Flex>
 
           <Box>

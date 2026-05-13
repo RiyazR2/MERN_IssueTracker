@@ -20,27 +20,14 @@ function App() {
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <Routes>
+          {/* Public Routes - No Login Required */}
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
-          
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          
-          <Route
-            path="/issues"
-            element={
-              <ProtectedRoute>
-                <IssueList />
-              </ProtectedRoute>
-            }
-          />
-          
+          <Route path="/" element={<Home />} />
+          <Route path="/issues" element={<IssueList />} />
+          <Route path="/issues/:id" element={<IssueDetail />} />
+
+          {/* Protected Routes - Login Required */}
           <Route
             path="/issues/new"
             element={
@@ -49,16 +36,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          
-          <Route
-            path="/issues/:id"
-            element={
-              <ProtectedRoute>
-                <IssueDetail />
-              </ProtectedRoute>
-            }
-          />
-          
+
           <Route
             path="/issues/edit/:id"
             element={
@@ -67,7 +45,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          
+
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster position="top-right" />
