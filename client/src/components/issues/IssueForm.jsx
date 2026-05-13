@@ -1,6 +1,6 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Flex, TextField } from '@radix-ui/themes';
+import { Button, Flex } from '@radix-ui/themes';
 import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
 import { issueSchema } from '../../utils/validation';
@@ -22,23 +22,34 @@ const IssueForm = ({ onSubmit, defaultValues, isSubmitting }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div>
-        <TextField.Root
-          placeholder="Title"
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Title Field */}
+      <div className="space-y-2">
+        <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+          Title <span className="text-red-500">*</span>
+        </label>
+        <input
+          id="title"
+          type="text"
+          placeholder="Enter issue title"
           {...register('title')}
-          size="3"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
         />
         {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>}
       </div>
 
-      <div>
+      {/* Description Field */}
+      <div className="space-y-2">
+        <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+          Description <span className="text-red-500">*</span>
+        </label>
         <Controller
           name="description"
           control={control}
           render={({ field }) => (
             <SimpleMDE
-              placeholder="Description (Markdown supported)"
+              id="description"
+              placeholder="Describe the issue (Markdown supported)"
               {...field}
             />
           )}
@@ -48,7 +59,8 @@ const IssueForm = ({ onSubmit, defaultValues, isSubmitting }) => {
         )}
       </div>
 
-      <Flex gap="3">
+      {/* Action Buttons */}
+      <Flex gap="3" mt="4">
         <Button type="submit" disabled={isSubmitting} className="cursor-pointer">
           {isSubmitting ? <Spinner size="sm" /> : defaultValues ? 'Update Issue' : 'Create Issue'}
         </Button>
