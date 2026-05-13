@@ -14,7 +14,7 @@ const googleCallback = async (req, res) => {
 
     // Redirect to frontend with token
     const clientURL = process.env.NODE_ENV === 'production'
-      ? process.env.PRODUCTION_URL
+      ? process.env.CLIENT_URL || 'https://mern-issue-tracker-app.vercel.app'
       : process.env.CLIENT_URL || 'http://localhost:5173';
 
     // Redirect with token in URL (frontend will store it)
