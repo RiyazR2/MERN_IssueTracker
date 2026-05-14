@@ -18,9 +18,8 @@ const IssueChart = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip />
           <Legend />
-          <Bar dataKey="count" fill="#8884d8" />
+          <Bar dataKey="count" fill="#8884d8" isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer>
     </Card>
