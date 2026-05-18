@@ -213,16 +213,6 @@ For detailed deployment instructions, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUI
 - **Public-First Strategy**: Made dashboard and issues browsable without login to reduce friction for new users while protecting write operations
 - **JWT over Sessions**: Stateless authentication better suited for serverless deployment and horizontal scaling
 
-### Challenges Faced
-
-During development, I encountered and solved several interesting problems:
-
-1. **OAuth Token Security**: Initially passed JWT in URL query params. Recognized security risk and documented improvement path using HTTP-only cookies
-2. **Vercel Serverless Routing**: Had to restructure Express app export and configure `vercel.json` for proper serverless function handling
-3. **Client-Side Routing on Vercel**: Added rewrite rules to support React Router's browser-based routing in production
-
-For a complete list of known issues and improvement plans, see [KNOWN_ISSUES_AND_FIXES.md](./KNOWN_ISSUES_AND_FIXES.md)
-
 ## What I Learned
 
 This project helped me gain hands-on experience with:
